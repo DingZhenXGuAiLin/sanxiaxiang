@@ -38,4 +38,9 @@ public class ManagerServiceImpl implements ManagerService {
     public Manager getManager(Integer manager_id) {
         return managerMapper.getManager(manager_id);
     }
+
+    @Override
+    public Integer getIdByName(String manager_name) {
+        return managerMapper.getIdByName(manager_name);
+    }
 }

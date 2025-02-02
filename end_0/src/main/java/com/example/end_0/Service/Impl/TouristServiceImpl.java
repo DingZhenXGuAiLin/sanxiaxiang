@@ -37,4 +37,9 @@ public class TouristServiceImpl implements TouristService {
     public Tourist getTourist(Integer tourist_id) {
         return touristMapper.getTourist(tourist_id);
     }
+
+    @Override
+    public Integer getIdByName(String tourist_name) {
+        return touristMapper.getIdByName(tourist_name);
+    }
 }

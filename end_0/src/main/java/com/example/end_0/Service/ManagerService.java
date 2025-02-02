@@ -21,4 +21,6 @@ public interface ManagerService {
     List<Manager> getAllManager();
 
     Manager getManager(Integer manager_id);
+
+    Integer getIdByName(String manager_name);
 }

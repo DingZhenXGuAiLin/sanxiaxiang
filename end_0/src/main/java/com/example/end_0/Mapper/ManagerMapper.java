@@ -22,4 +22,7 @@ public interface ManagerMapper {
 
     @Select("select * from manager where manager_id=#{manager_id}")
     Manager getManager(Integer manager_id);
+
+    @Select("select manager_id from manager where manager_name=#{manager_name}")
+    Integer getIdByName(String manager_name);
 }

@@ -17,6 +17,7 @@ public class TouristController {
 
     @PostMapping("/add")
     public Result add(@RequestParam String tourist_name, @RequestParam String tourist_password) {
+        if(touristService.getIdByName(tourist_name)!=null){return Result.error("用户名已注册");}
         touristService.addTourist(tourist_name,tourist_password);
         return Result.success();
     }

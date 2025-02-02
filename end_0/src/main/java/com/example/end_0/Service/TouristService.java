@@ -16,4 +16,6 @@ public interface TouristService {
     List<Tourist> getAllTourist();
 
     Tourist getTourist(Integer tourist_id);
+
+    Integer getIdByName(String tourist_name);
 }

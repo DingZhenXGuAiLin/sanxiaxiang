@@ -23,4 +23,7 @@ public interface TouristMapper {
 
     @Select("select * from tourist where tourist_id=#{tourist_id}")
     Tourist getTourist(Integer tourist_id);
+
+    @Select("select tourist_id from manager where tourist_name=#{tourist_name}")
+    Integer getIdByName(String tourist_name);
 }
