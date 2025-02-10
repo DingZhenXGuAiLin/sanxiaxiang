@@ -47,4 +47,7 @@ public class LandscapeController {
     public Result<List<Landscape>> getAll() {
         return Result.success(landscapeService.getAllLandscape());
     }
+
+    @GetMapping("/getScoreOfLandscape")
+    public Result getScoreOfLandscape(@RequestParam Integer landscape_id){return Result.success(landscapeService.getScoreOfLandscape(landscape_id));}
 }

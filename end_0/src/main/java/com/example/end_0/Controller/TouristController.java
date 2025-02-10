@@ -44,4 +44,11 @@ public class TouristController {
     public Result<List<Tourist>> getAll() {
         return Result.success(touristService.getAllTourist());
     }
+
+    @PostMapping("/score")
+    public Result score(@RequestParam Integer tourist_id,@RequestParam Integer landscape_id,@RequestParam Integer score){return touristService.score(tourist_id,landscape_id,score);}
+
+    @DeleteMapping("/deleteScoring")
+    public Result deleteScoring(@RequestParam Integer tourist_id,@RequestParam Integer landscape_id){return touristService.deleteScoring(tourist_id,landscape_id);}
+
 }

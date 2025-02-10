@@ -1,6 +1,8 @@
 package com.example.end_0.Service.Impl;
 
+import com.example.end_0.Common.Result.Result;
 import com.example.end_0.Mapper.TouristMapper;
+import com.example.end_0.Mapper.t_lMapper;
 import com.example.end_0.Pojo.entity.Tourist;
 import com.example.end_0.Service.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import java.util.List;
 public class TouristServiceImpl implements TouristService {
     @Autowired
     TouristMapper touristMapper;
+    @Autowired
+    t_lMapper tlMapper;
 
     @Override
     public void addTourist(String tourist_name, String tourist_password) {
@@ -41,5 +45,19 @@ public class TouristServiceImpl implements TouristService {
     @Override
     public Integer getIdByName(String tourist_name) {
         return touristMapper.getIdByName(tourist_name);
+    }
+
+    @Override
+    public Result score(Integer tourist_id, Integer landscape_id, Integer score) {
+        if(tlMapper.findScoring(tourist_id,landscape_id)!=null)return Result.error("该用户已为该景点打过分");
+        tlMapper.addScoring(tourist_id,landscape_id,score);
+        return Result.success();
+    }
+
+    @Override
+    public Result deleteScoring(Integer tourist_id, Integer landscape_id) {
+        if(tlMapper.findScoring(tourist_id,landscape_id)==null)return Result.error("该用户未为该景点打过分");
+        tlMapper.deleteScoring(tourist_id,landscape_id);
+        return Result.success();
     }
 }

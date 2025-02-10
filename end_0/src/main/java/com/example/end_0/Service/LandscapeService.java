@@ -21,4 +21,6 @@ public interface LandscapeService {
     Landscape getLandscape(Integer landscape_id);
 
     Integer getIdByName(String name);
+
+    Double getScoreOfLandscape(Integer landscape_id);
 }
