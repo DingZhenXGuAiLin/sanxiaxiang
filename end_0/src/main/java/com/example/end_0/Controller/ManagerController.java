@@ -19,7 +19,7 @@ public class ManagerController {
     public Result add(@RequestParam String manager_name,@RequestParam String manager_password) {
         if(managerService.getIdByName(manager_name)!=null){return Result.error("用户名已注册");}
         managerService.addManager(manager_name,manager_password);
-        return Result.success();
+        return Result.success(managerService.getIdByName(manager_name));
     }
 
     @DeleteMapping("/delete")

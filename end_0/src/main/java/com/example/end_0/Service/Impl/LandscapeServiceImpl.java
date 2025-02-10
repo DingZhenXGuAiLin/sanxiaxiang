@@ -28,4 +28,7 @@ public class LandscapeServiceImpl implements LandscapeService {
 
     @Override
     public Landscape getLandscape(Integer landscape_id) {return landscapeMapper.getLandscapeById(landscape_id);}
+
+    @Override
+    public Integer getIdByName(String name) {return landscapeMapper.getIdByName(name);}
 }

@@ -21,4 +21,7 @@ public interface LandscapeMapper {
 
     @Delete("delete from landscape where landscape_id=#{landscape_id}")
     void deleteLandscapeById(Integer landscape_id);
+
+    @Select("select landscape_id from landscape where name=#{name}")
+    Integer getIdByName(String name);
 }

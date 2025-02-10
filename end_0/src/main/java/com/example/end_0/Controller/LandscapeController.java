@@ -19,9 +19,9 @@ public class LandscapeController {
 
     @PostMapping("/add")
     public Result add(@RequestParam String name) {
-        System.out.println(1);
+        if(landscapeService.getIdByName(name)!=null){return Result.error("景点名已存在");}
         landscapeService.addLandscape(name);
-        return Result.success();
+        return Result.success(landscapeService.getIdByName(name));
     }
 
     @DeleteMapping("/delete")
