@@ -9,5 +9,5 @@ public class Landscape {
     String pic_url;
     String location;
     String telephone;
-
+    String description;
 }

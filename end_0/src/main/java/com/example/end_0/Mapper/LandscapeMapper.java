@@ -16,7 +16,7 @@ public interface LandscapeMapper {
     @Select("select * from landscape where landscape_id=#{landscape_id}")
     Landscape getLandscapeById(Integer landscape_id);
 
-    @Update("update landscape set name=#{name},pic_url=#{pic_url},location=#{location},telephone=#{telephone} where landscape_id=#{landscape_id}")
+    @Update("update landscape set name=#{name},pic_url=#{pic_url},location=#{location},telephone=#{telephone},description=#{description} where landscape_id=#{landscape_id}")
     void updateLandscape(Landscape landscape);
 
     @Delete("delete from landscape where landscape_id=#{landscape_id}")
