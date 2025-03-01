@@ -14,7 +14,7 @@ public interface TouristMapper {
     @Delete("delete from tourist where tourist_id=#{tourist_id}")
     void deleteTourist(Integer tourist_id);
 
-    @Update("update tourist set tourist_name=#{tourist_name},tourist_password=#{tourist_password} " +
+    @Update("update tourist set tourist_name=#{tourist_name},tourist_password=#{tourist_password},user_pic=#{user_pic} " +
             "where tourist_id=#{tourist_id}")
     void updateTourist(Tourist tourist);
 
