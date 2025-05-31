@@ -18,22 +18,34 @@ public class LandscapeServiceImpl implements LandscapeService {
     t_lMapper tlMapper;
 
     @Override
-    public void addLandscape(String name) {landscapeMapper.addLandscape(name);}
+    public void addLandscape(String name) {
+        landscapeMapper.addLandscape(name);
+    }
 
     @Override
-    public void deleteLandscape(Integer landscape_id) {landscapeMapper.deleteLandscapeById(landscape_id);}
+    public void deleteLandscape(Integer landscape_id) {
+        landscapeMapper.deleteLandscape(landscape_id);
+    }
 
     @Override
-    public void updateLandscape(Landscape landscape) {landscapeMapper.updateLandscape(landscape);}
+    public void updateLandscape(Landscape landscape) {
+        landscapeMapper.updateLandscape(landscape);
+    }
 
     @Override
-    public List<Landscape> getAllLandscape() {return landscapeMapper.getAllLandscape();}
+    public List<Landscape> getAllLandscape() {
+        return landscapeMapper.getAllLandscape();
+    }
 
     @Override
-    public Landscape getLandscape(Integer landscape_id) {return landscapeMapper.getLandscapeById(landscape_id);}
+    public Landscape getLandscape(Integer landscape_id) {
+        return landscapeMapper.getLandscape(landscape_id);
+    }
 
     @Override
-    public Integer getIdByName(String name) {return landscapeMapper.getIdByName(name);}
+    public Integer getIdByName(String name) {
+        return landscapeMapper.getIdByName(name);
+    }
 
     @Override
     public Double getScoreOfLandscape(Integer landscape_id) {
