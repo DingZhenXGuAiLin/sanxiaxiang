@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 游客管理控制器
  * 提供游客相关的REST API接口，包括注册、登录、信息管理和评分功能
+ * 支持微信小程序登录功能
  * 支持跨域访问，所有接口返回统一的Result格式
  *
  * @author system
@@ -22,32 +24,55 @@ import java.util.List;
 @RequestMapping("/tourist")
 public class TouristController {
 
-    /**
-     * 游客业务逻辑服务
-     * 通过依赖注入获取服务实例
-     */
     @Autowired
     TouristService touristService;
 
     /**
      * 游客注册接口
-     * 新游客注册账户，需要提供用户名和密码
-     * 会验证用户名的唯一性，如果用户名已存在则注册失败
+     * 统一的用户注册接口，支持手动注册和微信登录
      *
-     * @param tourist_name     游客用户名，必须唯一
-     * @param tourist_password 游客密码
+     * @param tourist 游客对象，包含所有必要信息
      * @return 注册结果，成功时返回新生成的游客ID，失败时返回错误信息
      */
     @PostMapping("/add")
-    public Result add(@RequestParam String tourist_name, @RequestParam String tourist_password) {
-        // 检查用户名是否已存在
-        if (touristService.getIdByName(tourist_name) != null) {
-            return Result.error("用户名已注册");
-        }
-        // 添加新游客
-        touristService.addTourist(tourist_name, tourist_password);
-        // 返回新生成的游客ID
-        return Result.success(touristService.getIdByName(tourist_name));
+    public Result add(@RequestBody Tourist tourist) {
+        return touristService.addTourist(tourist);
+    }
+
+    /**
+     * 获取微信用户信息接口
+     * 根据微信code获取用户的openid和unionid
+     *
+     * @param code 微信登录返回的code
+     * @return 操作结果，包含openid和unionid
+     */
+    @PostMapping("/getWxInfo")
+    public Result getWxInfo(@RequestParam String code) {
+        return touristService.getWxUserInfo(code);
+    }
+
+    /**
+     * 根据OpenID查询用户接口
+     * 根据微信OpenID查询用户是否存在
+     *
+     * @param wx_openid 微信OpenID
+     * @return 操作结果，包含用户信息或错误信息
+     */
+    @GetMapping("/getByOpenId")
+    public Result getByOpenId(@RequestParam String wx_openid) {
+        return touristService.getTouristByOpenId(wx_openid);
+    }
+
+    /**
+     * 统一登录接口
+     * 统一处理微信登录和注册逻辑
+     *
+     * @param wxInfo 微信用户信息
+     * @return 操作结果，包含用户信息
+     */
+    @PostMapping("/loginOrRegister")
+    public Result loginOrRegister(@RequestBody Map<String, Object> wxInfo) {
+        return touristService.wechatLoginOrRegister(wxInfo);
     }
 
     /**

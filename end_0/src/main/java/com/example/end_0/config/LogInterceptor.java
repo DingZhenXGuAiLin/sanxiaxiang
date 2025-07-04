@@ -8,6 +8,16 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * 日志拦截器
+ * 用于记录HTTP请求的详细信息
+ * 实现HandlerInterceptor接口，用于拦截HTTP请求
+ * 在请求处理前后执行相应的逻辑
+ * @function preHandle 在请求处理之前执行，返回true表示继续执行，返回false表示拦截
+ * @function postHandle 在请求处理之后执行,即在controller处理请求之后
+ * @function afterCompletion 在请求处理完成后执行,即在视图渲染之后
+ */
+
 @Component
 public class LogInterceptor implements HandlerInterceptor {
 

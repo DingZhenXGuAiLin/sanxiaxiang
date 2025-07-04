@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 景点管理控制器
@@ -84,10 +85,8 @@ public class LandscapeController {
      * @return 查询结果，成功时返回景点信息对象
      */
     @GetMapping("/getById")
-    public Result<Landscape> getById(@RequestParam Integer landscape_id) {
-        // 输出调试信息
-        System.out.println(landscapeService.getLandscape(landscape_id));
-        return Result.success(landscapeService.getLandscape(landscape_id));
+    public Result<Map<String, Object>> getById(@RequestParam Integer landscape_id) {
+        return Result.success(landscapeService.getLandscapeWithUrls(landscape_id));
     }
 
     /**
@@ -97,8 +96,8 @@ public class LandscapeController {
      * @return 查询结果，成功时返回景点信息列表
      */
     @GetMapping("/getAll")
-    public Result<List<Landscape>> getAll() {
-        return Result.success(landscapeService.getAllLandscape());
+    public Result<List<Map<String, Object>>> getAll() {
+        return Result.success(landscapeService.getAllLandscapeWithUrls());
     }
 
     /**

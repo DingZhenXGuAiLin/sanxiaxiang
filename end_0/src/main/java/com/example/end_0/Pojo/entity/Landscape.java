@@ -1,52 +1,36 @@
 package com.example.end_0.Pojo.entity;
 
 import lombok.Data;
+import java.util.List;
 
 /**
  * 景点实体类
  * 用于存储旅游景点的详细信息，包括名称、位置、联系方式等
  * 对应数据库中的landscape表
  *
- * @author system
+ * @param name         景点名称，景点正式名称，用于展示和搜索
+ * @param landscape_id 景点唯一标识ID，数据库主键，自动生成，用于唯一标识每个景点
+ * @param images       景点图片URL，存储景点展示图片的URL地址
+ * @param location     景点地理位置
+ * @param telephone    景点联系电话
+ * @param description  景点详细描述，景点的详细介绍，包括特色、历史、游玩建议等信息
+ *
+ * @author hyl
  * @version 1.0
- * @since 2024
+ * @since 2025
  */
 @Data
 public class Landscape {
 
-    /**
-     * 景点名称
-     * 景点的正式名称，用于展示和搜索
-     */
-    String name;
+    private String name;
 
-    /**
-     * 景点唯一标识ID
-     * 数据库主键，自动生成，用于唯一标识每个景点
-     */
-    Integer landscape_id;
+    private Integer landscape_id;
 
-    /**
-     * 景点图片URL
-     * 存储景点主要展示图片的访问路径或URL地址
-     */
-    String pic_url;
+    private List<String> images;;
 
-    /**
-     * 景点地理位置
-     * 景点的详细地址或地理位置描述
-     */
-    String location;
+    private String location;
 
-    /**
-     * 景点联系电话
-     * 游客咨询或预订时可使用的联系电话
-     */
-    String telephone;
+    private String telephone;
 
-    /**
-     * 景点详细描述
-     * 景点的详细介绍，包括特色、历史、游玩建议等信息
-     */
-    String description;
+    private String description;
 }

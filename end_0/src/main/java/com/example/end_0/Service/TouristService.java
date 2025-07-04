@@ -5,6 +5,7 @@ import com.example.end_0.Pojo.entity.Tourist;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 游客业务逻辑服务接口
@@ -22,10 +23,9 @@ public interface TouristService {
      * 添加新游客
      * 注册新的游客账户，需要验证用户名唯一性
      *
-     * @param tourist_name     游客用户名
-     * @param tourist_password 游客密码
+     * @param tourist 游客对象
      */
-    void addTourist(String tourist_name, String tourist_password);
+    Result addTourist(Tourist tourist);
 
     /**
      * 删除游客
@@ -70,6 +70,33 @@ public interface TouristService {
     Integer getIdByName(String tourist_name);
 
     /**
+     * 根据微信OpenID获取游客信息
+     * 通过微信OpenID查找对应的游客信息，用于微信登录
+     *
+     * @param wx_openid 微信OpenID
+     * @return 操作结果，包含游客信息或错误信息
+     */
+    Result getTouristByOpenId(String wx_openid);
+
+    /**
+     * 获取微信用户信息
+     * 根据微信code获取用户的openid和unionid
+     *
+     * @param code 微信登录返回的code
+     * @return 操作结果，包含openid和unionid
+     */
+    Result getWxUserInfo(String code);
+
+    /**
+     * 微信登录或注册
+     * 统一处理微信登录和注册逻辑
+     *
+     * @param wxInfo 微信用户信息
+     * @return 操作结果，包含用户信息
+     */
+    Result wechatLoginOrRegister(Map<String, Object> wxInfo);
+
+    /**
      * 游客给景点评分
      * 游客对指定景点进行评分，评分范围通常为1-5分
      *
@@ -89,4 +116,14 @@ public interface TouristService {
      * @return 操作结果，包含成功或失败信息
      */
     Result deleteScoring(Integer tourist_id, Integer landscape_id);
+
+    /**
+     * 更新用户session_key
+     * 保存微信登录时获取的session_key
+     *
+     * @param tourist_id 用户ID
+     * @param sessionKey 会话密钥
+     * @param expireTime 过期时间
+     */
+    void updateSessionKey(Integer tourist_id, String sessionKey, java.time.LocalDateTime expireTime);
 }
