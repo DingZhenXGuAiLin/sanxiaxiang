@@ -315,7 +315,7 @@ public class TouristServiceImpl implements TouristService {
                     nickname = "开发用户_" + suffix;
                 }
                 if (avatarUrl == null || avatarUrl.trim().isEmpty()) {
-                    avatarUrl = "https://example.com/default-avatar.jpg";
+                    avatarUrl = "";
                 }
                 // 开发环境下生成session_key
                 if (sessionKey == null || sessionKey.trim().isEmpty()) {
