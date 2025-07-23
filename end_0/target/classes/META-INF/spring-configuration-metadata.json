@@ -1,0 +1,167 @@
+{
+  "groups": [
+    {
+      "name": "cos",
+      "type": "com.example.end_0.config.CosConfig",
+      "sourceType": "com.example.end_0.config.CosConfig"
+    },
+    {
+      "name": "image",
+      "type": "com.example.end_0.config.ImageConfig",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.monitor",
+      "type": "com.example.end_0.config.ImageConfig$MonitorConfig",
+      "sourceType": "com.example.end_0.config.ImageConfig",
+      "sourceMethod": "getMonitor()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cos.bucket-name",
+      "type": "java.lang.String",
+      "description": "存储桶名称",
+      "sourceType": "com.example.end_0.config.CosConfig"
+    },
+    {
+      "name": "cos.region",
+      "type": "java.lang.String",
+      "description": "COS区域",
+      "sourceType": "com.example.end_0.config.CosConfig"
+    },
+    {
+      "name": "cos.secret-id",
+      "type": "java.lang.String",
+      "description": "腾讯云SecretId",
+      "sourceType": "com.example.end_0.config.CosConfig"
+    },
+    {
+      "name": "cos.secret-key",
+      "type": "java.lang.String",
+      "description": "腾讯云SecretKey",
+      "sourceType": "com.example.end_0.config.CosConfig"
+    },
+    {
+      "name": "image.allowed-domains",
+      "type": "java.lang.String[]",
+      "description": "防盗链白名单域名 允许访问图片的域名列表，为空则不启用防盗链",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.avatar-cache-duration",
+      "type": "java.lang.Integer",
+      "description": "用户头像缓存时长（秒） 用于用户上传的头像等可能变化的资源",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.base-url",
+      "type": "java.lang.String",
+      "description": "OSS存储桶基础URL 对象存储服务的基础访问地址",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.cdn-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用CDN true: 优先使用CDN域名，false: 直接使用OSS域名",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.cdn-url",
+      "type": "java.lang.String",
+      "description": "CDN加速域名 用于提供更快的图片访问速度",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.compression-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用压缩传输 启用Gzip压缩减少传输体积",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.default-cache-duration",
+      "type": "java.lang.Integer",
+      "description": "默认缓存时长（秒） 用于设置HTTP缓存头的默认值",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.fingerprint-algorithm",
+      "type": "java.lang.String",
+      "description": "指纹生成算法 支持：MD5、SHA256、TIMESTAMP、VERSION",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.fingerprint-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用URL指纹 启用后会在URL中添加版本标识用于缓存控制",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.fingerprint-format",
+      "type": "java.lang.String",
+      "description": "指纹URL格式 QUERY: file.jpg?v=hash, PATH: v1\/file.jpg, FILENAME: file-hash.jpg",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.image-quality",
+      "type": "java.lang.Integer",
+      "description": "图片质量压缩等级 取值范围1-100，数值越高质量越好",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.mobile-max-width",
+      "type": "java.lang.Integer",
+      "description": "移动端图片宽度限制 用于移动设备的响应式图片优化",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.monitor.cache-hit-rate-threshold",
+      "type": "java.lang.Integer",
+      "description": "缓存命中率告警阈值（百分比）",
+      "sourceType": "com.example.end_0.config.ImageConfig$MonitorConfig"
+    },
+    {
+      "name": "image.monitor.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用性能监控",
+      "sourceType": "com.example.end_0.config.ImageConfig$MonitorConfig"
+    },
+    {
+      "name": "image.monitor.error-rate-threshold",
+      "type": "java.lang.Integer",
+      "description": "错误率告警阈值（百分比）",
+      "sourceType": "com.example.end_0.config.ImageConfig$MonitorConfig"
+    },
+    {
+      "name": "image.monitor.response-time-threshold",
+      "type": "java.lang.Integer",
+      "description": "响应时间告警阈值（毫秒）",
+      "sourceType": "com.example.end_0.config.ImageConfig$MonitorConfig"
+    },
+    {
+      "name": "image.static-cache-duration",
+      "type": "java.lang.Integer",
+      "description": "静态资源缓存时长（秒） 用于图标、轮播图等长期不变的静态资源",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.watermark-enabled",
+      "type": "java.lang.Boolean",
+      "description": "水印配置是否启用 是否对重要图片添加水印保护",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.watermark-text",
+      "type": "java.lang.String",
+      "description": "水印文字内容",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    },
+    {
+      "name": "image.webp-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用WebP格式 现代浏览器支持WebP可显著减少图片大小",
+      "sourceType": "com.example.end_0.config.ImageConfig"
+    }
+  ],
+  "hints": []
+}
